@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
 import './App.css'
 
-const Demo1App = lazy(() => import('./Demo1/src/App'));
-const Demo2App = lazy(() => import('./Demo2/src/App'));
+const Demo1App = lazy(() => import('./demo1/src/App'));
+const Demo2App = lazy(() => import('./demo2/src/App'));
 
 function App() {
   return (
