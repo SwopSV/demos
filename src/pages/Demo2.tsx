@@ -1,5 +1,6 @@
 import '../demo2/src/App.css';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
 
 function HomePage() {
   return (
@@ -232,12 +233,31 @@ function ContactPage() {
 
 function Demo2Navbar() {
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+  // Stäng meny vid navigation
+  React.useEffect(() => { setMenuOpen(false); }, [location.pathname]);
   return (
-    <nav className="main-nav" style={{ display: 'flex', gap: 32, justifyContent: 'center', fontWeight: 600, fontSize: 18 }}>
-      <Link to="/demo2" className={location.pathname === '/demo2' ? 'active' : ''}>Hem</Link>
-      <Link to="/demo2/tjanster" className={location.pathname === '/demo2/tjanster' ? 'active' : ''}>Tjänster</Link>
-      <Link to="/demo2/referenser" className={location.pathname === '/demo2/referenser' ? 'active' : ''}>Referenser</Link>
-      <Link to="/demo2/kontakt" className={location.pathname === '/demo2/kontakt' ? 'active' : ''}>Kontakt</Link>
+    <nav className="main-nav responsive-nav">
+      <div className="nav-inner">
+        <div className="nav-logo">JP Byggservice</div>
+        <button
+          className="nav-hamburger"
+          aria-label={menuOpen ? 'Stäng meny' : 'Öppna meny'}
+          aria-expanded={menuOpen}
+          aria-controls="nav-menu"
+          onClick={() => setMenuOpen(m => !m)}
+        >
+          <span className={menuOpen ? 'hamburger-bar bar1 open' : 'hamburger-bar bar1'} />
+          <span className={menuOpen ? 'hamburger-bar bar2 open' : 'hamburger-bar bar2'} />
+          <span className={menuOpen ? 'hamburger-bar bar3 open' : 'hamburger-bar bar3'} />
+        </button>
+        <div className={`nav-links${menuOpen ? ' open' : ''}`} id="nav-menu">
+          <Link to="/demo2" className={location.pathname === '/demo2' ? 'active' : ''}>Hem</Link>
+          <Link to="/demo2/tjanster" className={location.pathname === '/demo2/tjanster' ? 'active' : ''}>Tjänster</Link>
+          <Link to="/demo2/referenser" className={location.pathname === '/demo2/referenser' ? 'active' : ''}>Referenser</Link>
+          <Link to="/demo2/kontakt" className={location.pathname === '/demo2/kontakt' ? 'active' : ''}>Kontakt</Link>
+        </div>
+      </div>
     </nav>
   );
 }
