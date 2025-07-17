@@ -42,3 +42,41 @@
 .read-the-docs {
   color: #888;
 }
+
+@media (max-width: 700px) {
+  .App {
+    padding: 0 !important;
+  }
+  /* Stack the demo buttons vertically */
+  .landing-btn-group {
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100%;
+    align-items: stretch !important;
+  }
+  .landing-btn-group a {
+    width: 100%;
+    font-size: 18px !important;
+    padding: 14px 0 !important;
+  }
+  /* Make the grid single column */
+  .landing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    max-width: 98vw !important;
+    padding: 0 2vw !important;
+  }
+  .landing-grid > div {
+    min-height: 120px !important;
+    padding: 18px !important;
+    gap: 16px !important;
+  }
+  .landing-title {
+    font-size: 2rem !important;
+    margin-top: 16px !important;
+  }
+  .landing-desc {
+    font-size: 1.1rem !important;
+    margin-bottom: 24px !important;
+  }
+}
